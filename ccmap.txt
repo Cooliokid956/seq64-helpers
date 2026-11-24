@@ -1,0 +1,47 @@
+Current CC map ([S] special, cant be changed):
+O: [S] Bank; bank:Bank
+X 6 X: [S] Data Entry (RPN/NRPN) MSB
+7: cvol:Volume
+8: panmix:W
+10: cpan:Pan
+11: cexp:Value
+X 32 X: [S] Bank LSS
+X 38 X: [S] Data Entry (RPN/NRPN) LSB
+65: portamento:Mode
+66: portamento:Target Pitch
+67: portamento:Time/Rate
+70: relsustain:Value
+72: release:Release
+75: vibdelay:Delay
+76: vibfreq:Frequency
+77: vibdepth:Depth
+78: vibfreqenv:Start
+79: vibfreqenv:Target
+80: vibfreqenv:Time
+81: vibdepthenv:Start
+82: vibdepthenv:Target
+83: vibdepthenv:Time
+91: reverb:Wet
+
+!(96-101)
+96: [S] Data Increment (RPN/NRPN)
+97: [S] Data Decrement (RPN/NRPN)
+98: [S] NRPN LSB
+99: [S] NRPN MSB
+100: [S] RPN LS8
+101: [S] RPN MSB
+
+114: [S] FL Studio compat Master Volume
+115: [S] FL Studio compat temporal section marker
+
+!(120-127)
+120: [S] All Sound Off
+121: [S] Reset All Controllers
+122: [S] Local On/Off
+123: [S] All Notes Off
+124: [S] Omni Mode Off
+125: [S] Omni Mode On
+126: [S] Mono Mode
+127: [S] Poly Mode
+128: [S] Pitch Bend; pitchbend:Bend
+129: [S] Program Change (instrument); instr:Instrument
