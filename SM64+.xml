@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="Shift_JIS"?>
 
-<ModuleData Name="GM Level1" Folder="" Priority="1" FileCreator="Takabo Soft" FileVersion="1.08" WebSite="http://takabosoft.com/">
+<ModuleData Name="SM64+" Folder="" Priority="1" FileCreator="Cooliokid 956" FileVersion="1.00" WebSite="https://example.com/">
 	<RhythmTrackDefault Gate="1" />
 
 	<InstrumentList>
@@ -450,211 +450,158 @@
 	</DrumSetList>
 
 	<ControlChangeMacroList>
-	
+
 		<Folder Name="PerformEdit">
-		
-			<CCM ID="130" Name="PitchBend" Color="#0fa806" Sync="Last">
+
+			<CCM ID="130" Name="Pitch Bend" Color="#0fa806" Sync="Last">
 				<Value Min="-8192" Max="8191" Offset="8192" />
 				<Memo>Changes the pitch.</Memo>
 				<Data>@PB #VH #VL</Data>
 			</CCM>
-		
-			<CCM ID="140" Name="PitchBend Range" Sync="Last">
-				<Value Default="2" Min="0" Max="24" />
-				<Memo>Sets up the maximum value which the pitch bend can be changed.\n12 = 1 octave</Memo>
-				<Data>@RPN 00H 00H #VL #NONE</Data>
-			</CCM>
-			
-			<CCM ID="1" Name="Modulation" Color="#1c1cfb" Sync="Last">
-				<Value />
-				<Memo>Sets up intensity of sound vibration.</Memo>
-				<Data>@CC 1 #VL</Data>
-			</CCM>
-			
+
 			<CCM ID="11" Name="Expression" Color="#CA0000" Sync="Last">
 				<Value />
-				<Memo>Sets up the volume of one part. Primarily used for sound emphasis during playback.</Memo>
+				<Memo>Set channel expression (second volume scale factor).</Memo>
 				<Data>@CC 11 #VL</Data>
 			</CCM>
-			
-			<CCM ID="64" Name="Hold1">
-				<Value>
-					<Entry Label="Off" Value="0" />
-					<Entry Label="On" Value="127" />
-				</Value>
-				<Memo>Sets up the sustain pedal.</Memo>
-				<Data>@CC 64 #VL</Data>
-			</CCM>
-			
+
+			<Folder Name="Portamento">
+				<CCM ID="65" Name="Portamento: Mode">
+					<Value />
+					<Data>@CC 65 #VL</Data>
+					<Memo></Memo>
+				</CCM>
+
+				<CCM ID="66" Name="Portamento: Target Pitch">
+					<Value Name="Note No. (Scale)" Type="Key" />
+					<Data>@CC 66 #VL</Data>
+					<Memo></Memo>
+				</CCM>
+
+				<CCM ID="67" Name="Portamento: Time/Rate">
+					<Value />
+					<Data>@CC 67 #VL</Data>
+					<Memo></Memo>
+				</CCM>
+
+				<CCM ID="68" Name="Portamento Off">
+					<Value />
+					<Data>@CC 68 00H</Data>
+					<Memo></Memo>
+				</CCM>
+			</Folder>
+
 		</Folder>
-		
+
 		<Folder Name="PartEdit">
-			<CCM ID="7" Name="Part Level" Color="#CA0000" Sync="Last">
+			<CCM ID="7" Name="Channel Volume" Color="#CA0000" Sync="Last">
 				<Value Default="100" />
-				<Memo>Sets up the volume balance of one part.</Memo>
+				<Memo>Set channel volume scale factor.</Memo>
 				<Data>@CC 7 #VL</Data>
 			</CCM>
-			
-			<CCM ID="10" Name="Part Panning" Color="#008080" Sync="Last">
+
+			<CCM ID="10" Name="Channel Pan" Color="#008080" Sync="Last">
 				<Value Min="-64" Max="63" Offset="64" />
 				<Memo>Sets up the position of sound.</Memo>
 				<Data>@CC 10 #VL</Data>
 			</CCM>
 
-			<CCM ID="141" Name="MasterFineTuning">
-				<Value Min="-8192" Max="8191" Offset="8192" />
-				<Memo></Memo>
-				<Data>@RPN 00H 01H #VH #VL</Data>
+			<CCM ID="8" Name="Pan Mixing" Color="#004d80" Sync="Last">
+				<Value Default="127" />
+				<Memo>How much to weight channel pan vs. note pan. The pan for each note will be computed as W * channel pan + (1 - W) * note pan. This sets W (0…128 maps to 0…1). W defaults to 1.0.</Memo>
+				<Data>@CC 8 #VL</Data>
 			</CCM>
-			
-			<CCM ID="142" Name="MasterCoarseTuning">
+
+			<CCM ID="91" Name="Reverb" Color="#006666" Sync="Last">
+				<Value Name="Wet" />
+				<Memo>Set amount of reverb (dry/wet mix).</Memo>
+				<Data>@CC 91 #VL</Data>
+			</CCM>
+
+			<CCM ID="142" Name="Transpose">
 				<Value Min="-24" Max="24" Offset="64" />
 				<Memo></Memo>
 				<Data>@RPN 00H 02H #VL #NONE</Data>
 			</CCM>
-			
+
 		</Folder>
 
 		<Folder Name="Other">
-				
-			<CCM ID="6" Name="DataEntryMSB">
-				<Value />
-				<Memo>Sets up MSB Data Entry.</Memo>
-				<Data>@CC 6 #VL</Data>
-			</CCM>
-			
-			<CCM ID="38" Name="DataEntryLSB">
-				<Value />
-				<Memo>Sets up LSB Data Entry.</Memo>
-				<Data>@CC 38 #VL</Data>
-			</CCM>
-			
-			<CCM ID="100" Name="RPN LSB">
-				<Value />
-				<Memo></Memo>
-				<Data>@CC 100 #VL</Data>
-			</CCM>
-			
-			<CCM ID="101" Name="RPN MSB">
-				<Value />
-				<Memo></Memo>
-				<Data>@CC 101 #VL</Data>
-			</CCM>
-		
-			<CCM ID="121" Name="ResetAllController">
-				<Memo></Memo>
-				<Data>@CC 121 0</Data>
-			</CCM>
-			
-			<CCM ID="123" Name="AllNoteOff">
-				<Memo></Memo>
-				<Data>@CC 123 0</Data>
-			</CCM>
-			
-			<CCM ID="132" Name="ChannelPressure">
-				<Value />
-				<Memo></Memo>
-				<Data>@CP #VL</Data>
-			</CCM>
-			
-			<CCM ID="200" Name="GM System ON">
-				<Data>@SYSEX F0H 7EH 7FH 09H 01H F7H</Data>
-				<Memo>Initializes GM Sound Source.</Memo>
+
+			<CCM ID="131" Name="Master Volume" Color="#CC00FF" Sync="Last">
+				<Value Default="127" />
+					<Data>@SYSEX F0H 7FH 7FH 04H 01H 00H #VL F7H</Data>
+				<Memo>Set the song's master volume.</Memo>
 			</CCM>
 
-			<CCM ID="128" Name="Rest" Color="#aaaaaa">
-				<Memo>Rest</Memo>
-			</CCM>
 		</Folder>
 
 	</ControlChangeMacroList>
 
 	<TemplateList>
 		<Template ID="0" Name="Track Initialization">
-			<Memo>A template for track initilization.</Memo>
+			<Memo>A template for track initialization.</Memo>
+			<CC ID="8" Value="127" />
 			<CC ID="7" Value="100" />
 			<CC ID="10" Value="0" />
 			<PC Mode="Auto" />
 			<CC ID="130" Value="0" />
-			<CC ID="1" Value="0" />
-			<CC ID="11" Value="127" />		
+			<CC ID="11" Value="127" />
 		</Template>
 	</TemplateList>
 
 	<DefaultData>
 		<Track Mode="Conductor">
-			<Mark Tick="0" Name="Setup" />
 			<Tempo Tick="0" Tempo="120.0" />
-			<Mark Tick="1920" Name="Start" />
-			<EOT Tick="1920" />
-		</Track>
-		<Track Name="Setup" Ch="1">
-			<CC Tick="0" ID="200" />
-			<EOT Tick="1920" />
 		</Track>
 		<Track Ch="1" Current="1">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<CC ID="131" Step="0" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="2">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="3">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="4">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="5">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="6">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="7">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="8">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="9">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Name="Rhythm" Ch="10" Mode="Rhythm">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="11">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="12">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="13">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="14">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="15">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 		<Track Ch="16">
-			<Template ID="0" Tick="480" />
-			<EOT Tick="1920" />
+			<Template ID="0" Step="0"/>
 		</Track>
 	</DefaultData>
 
