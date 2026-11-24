@@ -61,16 +61,14 @@
            cname="nprg">
     <parameter name="Instrument (0-0x7E)" meaning="None" datasrc="fixed" datalen="1"/>
   </command>
-  <command cmd="199" name="portamento" action="CC or CC Group" comments="Enable portamento (aka glissando; continuously sliding pitch). X describes the mode of operation somehow using its 0x80 bit and a value 0-5 in its lower-order bits. (Probably 0x80 = set = fixed sweep rate, 0x80 = clear = fixed sweep time, or maybe vice versa.) Y describes the target pitch. Z gives the duration, and is a u8 if the 0x80 bit is set in X, otherwise a var. Note that parsing this data-dependent datatype is not supported by SEQ64!&#10;Canon parameter description info: 01-05 are &quot;SWEEP&quot;, 81-85 are &quot;ASWEEP&quot; with comment &quot;Set length next notetime&quot;. 1=&quot;AB1&quot;, 2=&quot;BA1&quot;, 3=&quot;ABL&quot;, 4=&quot;BAL&quot;, 5=&quot;NBL&quot; with comment &quot;Set basekey before key&quot;."
-           validintrk="1" cname="sweepfrom" oname="sweep" validinchn="1">
-    <parameter name="Mode" meaning="CC" datasrc="fixed" datalen="1" cc="65"/>
-    <parameter name="Target Pitch" meaning="CC" datasrc="fixed" datalen="1"
-               cc="66"/>
-    <parameter name="Time/Rate" meaning="CC" datasrc="fixed" datalen="1" cc="67"
-               x2="1"/>
+  <command cmd="199" name="portamento" action="No Action" comments="Enable portamento (aka glissando; continuously sliding pitch). X describes the mode of operation somehow using its 0x80 bit and a value 0-5 in its lower-order bits. (Probably 0x80 = set = fixed sweep rate, 0x80 = clear = fixed sweep time, or maybe vice versa.) Y describes the target pitch. Z gives the duration, and is a u8 if the 0x80 bit is set in X, otherwise a var. Note that parsing this data-dependent datatype is not supported by SEQ64!&#10;Canon parameter description info: 01-05 are &quot;SWEEP&quot;, 81-85 are &quot;ASWEEP&quot; with comment &quot;Set length next notetime&quot;. 1=&quot;AB1&quot;, 2=&quot;BA1&quot;, 3=&quot;ABL&quot;, 4=&quot;BAL&quot;, 5=&quot;NBL&quot; with comment &quot;Set basekey before key&quot;."
+           validintrk="1" cname="sweepfrom" oname="sweep">
+    <parameter name="Mode" meaning="None" datasrc="fixed" datalen="1"/>
+    <parameter name="Target Pitch" meaning="None" datasrc="fixed" datalen="1"/>
+    <parameter name="Time/Rate" meaning="None" datasrc="fixed" datalen="1"/>
   </command>
-  <command cmd="200" name="portamentooff" action="CC or CC Group" comments="Disable portamento."
-           validintrk="1" cname="sweepend" cc="68" validinchn="1"/>
+  <command cmd="200" name="portamentooff" action="No Action" comments="Disable portamento."
+           validintrk="1" cname="sweepend"/>
   <command cmd="201" name="shortgate" action="No Action" validintrk="1"
            comments="Set the gate length for future short notes." cname="dgate">
     <parameter name="Gate" meaning="None" datasrc="fixed" datalen="1"/>
